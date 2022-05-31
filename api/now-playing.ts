@@ -14,9 +14,9 @@ export default async function (req: NowRequest, res: NowResponse) {
   const params = decode(req.url.split("?")[1]) as any;
 
   if (params && typeof params.open !== "undefined") {
-    if (item && item.external_urls) {
+    if (item && item.external_urls && item.uri) {
       res.writeHead(302, {
-        Location: item.external_urls.spotify,
+        Location: item.uri,
       });
       return res.end();
     }

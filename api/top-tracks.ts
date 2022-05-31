@@ -13,9 +13,9 @@ export default async function (req: NowRequest, res: NowResponse) {
   }
 
   if (typeof open !== "undefined") {
-    if (item && item.external_urls) {
+    if (item && item.external_urls && item.uri) {
       res.writeHead(302, {
-        Location: item.external_urls.spotify,
+        Location: item.uri,
       });
       return res.end();
     }
